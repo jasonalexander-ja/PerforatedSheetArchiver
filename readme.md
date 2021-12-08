@@ -1,0 +1,6 @@
+# Perforated Sheet Archiver
+
+ A program to allow scanning of perforated sheets intended for music automatons, to be written in Scala. 
+
+## Process outline
+ A camera in front of the automaton with the paper exposed, then we calibrate where it should be looking for holes, make sure it is definitely identifying correctly where there is holes/no holes (possible user configurable offsets), we press run and spin the paper, the software store the start time before breaking into the main event loop, that is it will take a couple photos in relatively quick succession to get a good average, it will crop out a few pixels from each photo where the holes should be, getting an average of the colour/brightness of the pixels and then an average across the photos, then it will take these final values and check them against the white vs dark ranges set at start up, turning them into definitive white/dark values, then taking the white/dark values and checking them against the previous values for the note, if a change is detected, the previous note will be assigned a duration and handed off to be turned into a midi value to be appended to a file, then replaced with the new note with a timestamp of when that note started
